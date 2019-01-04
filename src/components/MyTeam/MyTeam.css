@@ -1,0 +1,182 @@
+.MyTeam {
+    display: flex;
+    width: 100%;
+}
+.MyTeam h1 {
+    font-size: 3rem;
+    font-weight: 400;
+}
+.myTeamContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.myTeamInfo {
+    height: 22em;
+    box-shadow: 1px 1px 1px 1px  #a8a8e6;
+    background-color: whitesmoke;
+    margin: 1em;
+    padding: 1em;
+    width: 22em;
+}
+.myTeamDescription h2 {
+    height: 75%;
+    overflow: hidden;
+}
+.myTeamInfo h3 {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+.myTeamInfo h2 {
+    box-shadow: 0 0 1px 1px #a8a8e6;
+    padding: .25em;
+    background-color: white;
+}
+.myTeamMembers {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.myTeamMembers h2 {
+    margin: 0 0 1em 0;
+}
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-size: 3rem;
+    font-weight: 400;
+    padding-bottom: 5em;
+}
+.myTeamInfoSections {
+    display: flex;
+    margin-top: 10em;
+    margin-bottom: 1.5em;
+}
+.newEventLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+}
+.editTeam {
+    display: flex;
+}
+.editTeam div {
+    margin: 0 2.4em;
+}
+.EditTitle {
+    text-align: center;
+    font-size: 2em;
+    padding: 1em;
+    border-bottom: 1px solid #1B1B25;
+}
+.deleteTeam {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+.editManager {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+.changeManagerInput {
+    display: flex;
+}
+.deleteButtons {
+    display: flex;
+    flex-direction: column;
+}
+.deleteButtons button {
+    margin: 2em;
+}
+.removeButton {
+    position: relative;
+    margin: 0;
+    left: 11.2em;
+}
+.removeButton button {
+    border: 1px solid transparent;
+    background-color: rgb(219, 207, 207);
+    font-size: 10px;
+    border-radius: 50%;
+    border: 1px solid #1B1B25;
+    font-weight: 800;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+.editMyTeam {
+    margin-top: 26em;
+}
+.editMyTeam button {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    background-color: whitesmoke;
+    font-weight: 550;
+    font-size: 1em;
+}
+.editMyTeam input {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    background-color: whitesmoke;
+    font-size: 1em;
+    font-weight: 550;
+}
+.popup {
+    position: relative;
+    cursor: pointer;
+    float: right;
+    border: 1px solid #1B1B25;
+    padding-left: .25em;
+    padding-right: .25em;
+}
+.popup .popuptext {
+    visibility: hidden;
+    border: 1px solid #1B1B25;
+    width: 10em;
+    background-color: white;
+    color: #1B1B25;
+    text-align: center;
+    border-radius: 6px;
+    padding: .25em 0;
+    position: absolute;
+    bottom: -75%;
+    left: -2.45em;
+    margin-left: -8em;
+    cursor: auto;
+    overflow: visible;
+    z-index: 1;
+}
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 65%;
+    left: 100%;
+    margin-left: 0px;
+    border-width: .4em;
+    border-style: solid;
+    border-color:  transparent  transparent transparent #1B1B25;
+}
+.popup:hover .popuptext {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+  
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}

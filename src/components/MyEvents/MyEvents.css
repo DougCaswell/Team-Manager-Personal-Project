@@ -1,0 +1,158 @@
+.myEvents {
+    display: flex;
+    width: 100%;
+}
+.navPlaceHolder {
+    width: 270px;
+    height: 100%;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+}
+.myEvents .navPlaceHolder {
+    width: 270px;
+}
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.myEvents * {
+    margin: 0;
+    padding: 0;
+}
+.myHeader {
+    margin:0;
+    background-color: #0088ce;
+    width: 100%;
+    color: white;
+    height: 42px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.myHeader h1 {
+    font-size: 25px;
+    font-weight: bold;
+}
+.events > h2,
+.activeEventDetailsBox > h2 {
+    margin-bottom: .5rem;
+}
+.activeEventDetails {
+    background-color: white;
+    box-shadow: 1px 1px 10px 1px #e6e6e6;
+    padding: 15px 1em 1em 1em;
+    width: 27vw;
+    font-size: 19.23px;
+}
+.activeEventDetails div {
+    margin: 0;
+}
+.eventPlace p {
+    margin-left: 4em;
+}
+.activeEventTime {
+    text-align: end;
+    width: 10vw;
+}
+.activeEventDetailsBox p {
+    margin-left: .5em;;
+}
+.activeEventDetailsBox h3 {
+    margin: .5em 0;
+}
+.eventDescription h3 {
+    border-bottom: 1px solid #e6e6e6;
+}
+.eventPlace h4 {
+    font-weight: 550;
+}
+.eventPlace h3 {
+    border-bottom: 1px solid #e6e6e6;
+}
+.myEventsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.eventsBox {
+    display: flex;
+}
+.event {
+    background-color: white;
+    width: 28vw;
+    position: relative;
+    box-shadow: 1px 1px 10px 1px #e6e6e6;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+    cursor: pointer;
+    font-size: 15px;
+}
+.when {
+    margin-top: .5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.events, .activeEventDetailsBox {
+    width: 30vw;
+    box-shadow: none;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4em;
+    border-radius: 3.5px;
+    cursor: default;
+}
+.eventHeader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: .5rem;
+}
+.eventHeader div {
+    width: 50%;
+}
+.myEventName {
+    display: flex;
+    width: 100%;
+}
+.address {
+    text-align: center;
+}
+.address p {
+    margin: 0;
+    padding: 0;
+}
+.activeEventDetails .first {
+    margin-top: 0;
+}
+#cityState {
+    margin: 1em 0 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%
+}
+#cityStateValue {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 0
+}
+#cityStateValue p {
+    margin: 0;
+    padding: 0;
+}

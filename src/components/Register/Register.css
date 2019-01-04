@@ -1,0 +1,56 @@
+.RegisterPage {
+    margin-left: 1em;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.RegisterInputs a {
+    color: #1B1B25;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0 0 2em 0;
+    text-decoration: none;
+}
+.RegisterInputs {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    line-height: 1.5;
+    color: #3a424d;
+    margin-top: 15em;
+    
+}
+.RegisterInputs h3 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 2em;
+}
+.RegisterInputs input {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    background-color: white;
+    font-weight: 550;
+    font-size: 1em;
+    margin: 1em 0 1em 0;
+}
+.RegisterInputs button {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    background-color: white;
+    font-weight: 550;
+    font-size: 1em;
+    margin: 1em 0 1em 0;
+    width: 10em;
+}
+.linked {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70vw;
+    height: 100%;
+    background-color: aliceblue;
+}

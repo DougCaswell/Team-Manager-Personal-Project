@@ -1,0 +1,42 @@
+.NewTeam {
+    display: flex;
+    width: 100%;
+}
+.myNewTeamContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.myNewTeamContainer div {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    padding: 1em;
+    background-color: whitesmoke;
+}
+.myNewTeamContainer textarea {
+    margin-left: 1em;
+}
+.NewTeam h1  {
+    font-size: 3rem;
+    font-weight: 400;
+}
+.NewTeam input {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    background-color: white;
+    font-weight: 550;
+    font-size: 1em;
+    margin: 1em;
+}
+.NewTeam button {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    background-color: white;
+    font-weight: 550;
+    font-size: 1em;
+    margin: 1em;
+}
