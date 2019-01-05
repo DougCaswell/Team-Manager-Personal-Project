@@ -68,14 +68,15 @@
     border: none;
 }
 #logout {
-    font-size: 1em;
-    margin: 1em;
+    font-size: 16px;
+    margin: .3em;
     color: white;
     background-color: #1B1B25;
     box-shadow: none;
-    padding: 5px;
+    padding: 12px;
     border-radius: 5px;
     font-weight: bold;
+    border-top: 1px solid #2a2a38;
 }
 #logout:hover {
     color: #c5fffe;

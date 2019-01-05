@@ -41,7 +41,7 @@ class Login extends Component {
                 <div className='LoginInputs'>
                     <h3>My account</h3>
                     <Link to='/register'>Don't have an account yet?</Link>
-                    E-mail <input name='email' onChange={event => this.handleInputChange(event)} value={this.state.email} />
+                    E-mail <input spellCheck='false' name='email' onChange={event => this.handleInputChange(event)} value={this.state.email} />
                     Password <input type='password' name='password' onChange={event => this.handleInputChange(event)} value={this.state.password} />
                     <button onClick={event => this.login()} >Login</button>
                     

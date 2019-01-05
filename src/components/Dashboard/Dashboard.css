@@ -46,10 +46,16 @@
 }
 .Dashboard button {
     border: none;
-    box-shadow: 1px 1px 1px 1px #a8a8e6;
-    background-color: whitesmoke;
-    font-weight: 550;
-    font-size: 1em;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+    background-color: #f0f1f5;
+    font-weight: 500;
+    padding: 8px;
+    border-radius: 2px;
+    font-size: 18px;
+}
+.Dashboard button:hover {
+    background-color: #e6e6e6;
+    box-shadow: 2px 2px 2px 1px #d1d1d1;
 }
 .profileInfo {
     display: flex;

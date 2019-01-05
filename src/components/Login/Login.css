@@ -30,20 +30,28 @@
 }
 .LoginInputs input {
     border: none;
-    box-shadow: 1px 1px 1px 1px #a8a8e6;
-    background-color: white;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+    background-color: #f0f1f5;
     font-weight: 550;
     font-size: 1em;
     margin: 1em 0 1em 0;
 }
 .LoginInputs button {
     border: none;
-    box-shadow: 1px 1px 1px 1px #a8a8e6;
-    background-color: white;
-    font-weight: 550;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+    background-color: #f0f1f5;
+    font-weight: 400;
     font-size: 1em;
     margin: 1em 0 1em 0;
     width: 10em;
+}
+.LoginInputs button:hover {
+    background-color: #e6e6e6;
+    box-shadow: 2px 2px 2px 1px #d1d1d1;
+}
+.LoginInputs input:hover {
+    background-color: #e6e6e6;
+    box-shadow: 2px 2px 2px 1px #d1d1d1;
 }
 .linked {
     margin: 0;

@@ -41,7 +41,7 @@ class Register extends Component {
                 <div className='RegisterInputs'>
                     <h3>Create account</h3>
                     <Link to='/'>Already have an account?</Link>
-                    E-mail <input name='email' onChange={event => this.handleInputChange(event)} value={this.state.email} />
+                    E-mail <input spellCheck='false' name='email' onChange={event => this.handleInputChange(event)} value={this.state.email} />
                     Password <input type='password' name='password' onChange={event => this.handleInputChange(event)} value={this.state.password} />
                     <button onClick={event => this.register()} >Register</button>
                     

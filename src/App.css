@@ -1,7 +1,27 @@
+* {
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.App button {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+    background-color: #f0f1f5;
+    font-weight: 500;
+    padding: 8px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.App input {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+    background-color: #f0f1f5;
+    font-weight: 550;
+    padding: 8px;
+    border-radius: 2px;
+    cursor: text;
+}
 body {
     padding: 0;
     margin: 0;
-    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .App {
     display: flex;

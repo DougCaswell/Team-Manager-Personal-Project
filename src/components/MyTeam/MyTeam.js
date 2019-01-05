@@ -119,7 +119,7 @@ class MyTeam extends Component {
                             <h4 className='removeButton' >Remove from team <button onClick={() => this.removeFromTeam(id)}>X</button></h4>
                             <h2>{displayed_name || full_name || email}
                                 <div className="popup">Details
-                                <span className="popuptext" id="myPopup">{`Full Name: ${full_name || '?'} Email: ${email || '?'} Phone: ${phone || '?'} Preferred Contact Method: ${preferred_contact_method || '?'}`}</span>
+                                <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${preferred_contact_method || '?'}`}</p></span>
                                 </div>
                             </h2>
                         </div>
@@ -135,10 +135,10 @@ class MyTeam extends Component {
                             <div className='myTeamContainer'>
                                 <div className='myTeamInfoSections'>
                                     <div className='myTeamInfo myTeamDescription'>
-                                        <h3>About the Team: </h3>
+                                        <h3>Team {this.props.team.name} </h3>
                                         <h2>{this.props.team.description}</h2>
                                     </div>
-                                    <div className='myTeamInfo myTeamMembers'>
+                                    <div id='scrollingDiv' className='myTeamInfo myTeamMembers'>
                                         <h3>Members: </h3>{mapMembers}
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@ class MyTeam extends Component {
                                             </div>
                                             <div className='editTeamDescription'>
                                                 <h2>Edit Team Description</h2>
-                                                <input name='description' onChange={(event) => this.handleInputChange(event)} placeholder='Description' />
+                                                <textarea name='description' onChange={(event) => this.handleInputChange(event)} placeholder='Click and drag the bottom right corner to resize' />
                                                 <button onClick={() => this.editTeamDescription()} >Save</button>
                                             </div>
                                             <div className='newTeamMember'>
