@@ -46,7 +46,7 @@ module.exports = {
         const address_Line_Three = req.body.address_Line_Three || null;
         const city = req.body.city || null;
         const state = req.body.state || null;
-        const zip_Code = req.body.zip_Code || null;
+        const zip_Code = req.body.zip_code || null;
         const {mandetory, name, date, time, id, team_manager} = req.body;
         if (user.id !== team_manager) {
             return res.status(401).send('Only the manager can edit team events')

@@ -83,7 +83,10 @@ class MyEvents extends Component {
         const { id, team_manager } = this.state.activeEvent
         const res = await axios.post('/api/events/edit', { id, team_manager, name, date, time, mandetory, description, address_line_one, address_line_two, address_line_three, city, state, zip_code })
         this.props.updateUser(res.data)
+        const index = this.props.user.events.findIndex(event => event.id === id)
+        const activeEvent = this.props.user.events[index]
         this.setState({
+            activeEvent: {...activeEvent, date: this.formatDate(activeEvent.date), time: this.formatTime(activeEvent.time)},
             edit: false
         })
     }
