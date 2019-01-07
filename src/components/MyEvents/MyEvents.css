@@ -121,6 +121,10 @@
     cursor: pointer;
     min-height: 54px;
 }
+.event:hover {
+    background-color: #e6e6e6;
+    box-shadow: 2px 2px 2px 1px #d1d1d1;
+}
 .mappedEvents {
     display: flex;
     flex-direction: column;
