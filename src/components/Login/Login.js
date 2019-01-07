@@ -23,6 +23,9 @@ class Login extends Component {
 
     async login() {
         const { email, password } = this.state;
+        if (!email || !password) {
+            return alert('Must have username and password fields filled out')
+        }
         const res = await axios.post('/auth/login', { email, password })
         this.setState({
             email: '',

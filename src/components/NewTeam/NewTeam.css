@@ -13,30 +13,46 @@
 .myNewTeamContainer div {
     display: flex;
     flex-direction: column;
-    box-shadow: 1px 1px 1px 1px #a8a8e6;
-    padding: 1em;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+    padding: 70px;
     background-color: whitesmoke;
 }
 .myNewTeamContainer textarea {
-    margin-left: 1em;
+    margin: 1em 0;
+    resize: vertical;
+    width: 400px;
+    height: 19px;
+    padding: 8px;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+
 }
-.NewTeam h1  {
-    font-size: 3rem;
-    font-weight: 400;
+.myNewTeamContainer div > h3 {
+    margin: 0 0 1em 0;
+}
+.myNewTeamContainer input + h3 {
+    margin: 1em 0;
 }
 .NewTeam input {
     border: none;
-    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
     background-color: white;
     font-weight: 550;
     font-size: 1em;
-    margin: 1em;
+    margin: 1em 0;
+    width: 400px;
 }
 .NewTeam button {
     border: none;
-    box-shadow: 1px 1px 1px 1px #a8a8e6;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
     background-color: white;
     font-weight: 550;
     font-size: 1em;
-    margin: 1em;
+    width: 416px;
+    margin: 70px 0 0 0;
+}
+.NewTeam input:hover,
+.NewTeam button:hover,
+.NewTeam textarea:hover {
+    background-color: #e6e6e6;
+    box-shadow: 2px 2px 2px 1px #d1d1d1;
 }

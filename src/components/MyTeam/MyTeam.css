@@ -143,6 +143,7 @@
     cursor: text;
     height: 18px;
     width: 300px;
+    resize: vertical;
 }
 .editTeamDescription textarea:hover {
     background-color: #e6e6e6;
@@ -211,6 +212,7 @@
 ::-webkit-scrollbar-track {
     float: right;
     background-color: transparent;
+    box-shadow: inset 0 0 8px #d1d1d1;
     -webkit-box-shadow: inset 0 0 8px #d1d1d1; 
     border-radius: 10px;
 }
@@ -219,10 +221,12 @@
     float: right;
     background-color: transparent;
     border-radius: 10px;
+    box-shadow: inset 0 0 6px #0088ce;
     -webkit-box-shadow: inset 0 0 6px #0088ce; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
+    box-shadow: inset 0 0 12px #0088ce;
     -webkit-box-shadow: inset 0 0 12px #0088ce; 
 }
   

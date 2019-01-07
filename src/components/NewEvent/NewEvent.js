@@ -60,7 +60,7 @@ class NewEvent extends Component {
     }
     async createEvent() {
         const { name, description, addressLineOne, addressLineTwo, addressLineThree, city, state, zipCode, mandetory, date, time } = this.state
-        if (!name) { return alert('Event needs a name') }
+        if (!name || !date || !time) { return alert('Event needs atleast a name, date, and time') }
         const res = await axios.post('/api/event/new', { name, description, addressLineOne, addressLineTwo, addressLineThree, city, state, zipCode, mandetory, date, time })
         if (res.data.events) {
             this.props.updateTeam(res.data)
@@ -85,12 +85,9 @@ class NewEvent extends Component {
                                         <h2>Name</h2>
                                         <input placeholder='Event Name' name='name' maxLength='32' onChange={(event) => this.handleInputChange(event)} value={this.state.name} />
                                         <h2>Description</h2>
-                                        <textarea placeholder='Event Description' className='description' name='description' maxLength='500' onChange={(event) => this.handleInputChange(event)} value={this.state.description} />
-                                        <h2>Mandetory</h2>
-                                        <div className='mandetory'>
-                                            <input type='radio' name='mandetory' onChange={(event) => this.handleInputChange(event)} value={true} /> Yes
-                                    <input type='radio' name='mandetory' defaultChecked={!this.state.mandetory} onChange={(event) => this.handleInputChange(event)} value={false} /> No
-                                </div>
+                                        <textarea placeholder='Click and drag the bottom right corner to resize' className='description' name='description' maxLength='500' onChange={(event) => this.handleInputChange(event)} value={this.state.description} />
+                                        <h2>Date</h2>
+                                        <input type='date' name='date' onChange={(event) => this.handleInputChange(event)} value={this.state.date} />
                                     </div>
                                     <div className='where'>
                                         <h2>Address Line 1</h2>
@@ -99,8 +96,8 @@ class NewEvent extends Component {
                                         <input placeholder='Address Line 2' name='addressLineTwo' maxLength='32' onChange={(event) => this.handleInputChange(event)} value={this.state.addressLineTwo} />
                                         <h2>Address Line 3</h2>
                                         <input placeholder='Address Line 3' name='addressLineThree' maxLength='32' onChange={(event) => this.handleInputChange(event)} value={this.state.addressLineThree} />
-                                        <h2>Date</h2>
-                                        <input type='date' name='date' onChange={(event) => this.handleInputChange(event)} value={this.state.date} />
+                                        <h2>Time</h2>
+                                        <input type='time' name='time' onChange={(event) => this.handleInputChange(event)} value={this.state.time} />
                                         <button onClick={() => this.createEvent()}>Create</button>
                                     </div>
                                     <div className='other'>
@@ -110,8 +107,11 @@ class NewEvent extends Component {
                                         <input placeholder='State' name='state' maxLength='2' onChange={(event) => this.handleInputChange(event)} value={this.state.state} />
                                         <h2>Zip Code</h2>
                                         <input placeholder='Zip Code' type='number' name='zipCode' onChange={(event) => this.handleInputChange(event)} value={this.state.zipCode} />
-                                        <h2>Time</h2>
-                                        <input type='time' name='time' onChange={(event) => this.handleInputChange(event)} value={this.state.time} />
+                                        <h2>Mandetory</h2>
+                                        <div className='mandetory'>
+                                            <input type='radio' name='mandetory' onChange={(event) => this.handleInputChange(event)} value={true} /> Yes
+                                            <input type='radio' name='mandetory' defaultChecked={!this.state.mandetory} onChange={(event) => this.handleInputChange(event)} value={false} /> No
+                                        </div>
                                     </div>
                                 </div>
                             </div>

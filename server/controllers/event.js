@@ -40,22 +40,18 @@ module.exports = {
             return res.status(401).send('must be logged in to edit events')
         }
         const db = req.app.get('db')
-        const name = req.body.name || null;
         const description = req.body.description || null;
-        const addressLineOne = req.body.addressLineOne || null;
-        const addressLineTwo = req.body.addressLineTwo || null;
-        const addressLineThree = req.body.addressLineThree || null;
+        const address_Line_One = req.body.address_Line_One || null;
+        const address_Line_Two = req.body.address_Line_Two || null;
+        const address_Line_Three = req.body.address_Line_Three || null;
         const city = req.body.city || null;
         const state = req.body.state || null;
-        const zipCode = req.body.zipCode || null;
-        const {mandetory, date, time, id, teamId} = req.body;
-        const team = await db.get_team([teamId])
-        const teamManager = team[0].team_manager
-        const isManager = user.id === teamManager
-        if (!isManager) {
+        const zip_Code = req.body.zip_Code || null;
+        const {mandetory, name, date, time, id, team_manager} = req.body;
+        if (user.id !== team_manager) {
             return res.status(401).send('Only the manager can edit team events')
         }
-        await db.edit_event([id, name, description, addressLineOne, addressLineTwo, addressLineThree, city, state, zipCode, mandetory, date, time]).catch(error => {
+        await db.edit_event([id, name, description, address_Line_One, address_Line_Two, address_Line_Three, city, state, zip_Code, mandetory, date, time]).catch(error => {
             console.log(error)
             res.sendStatus(500)
         })
@@ -69,13 +65,11 @@ module.exports = {
         if (!user) {
             return res.status(401).send('must be logged in to edit events')
         }
-        const {teamId, id} = req.body
-        const team = await db.get_team([teamId])
-        const teamManager = team[0].team_manager
-        const isManager = user.id === teamManager
-        if (!isManager) {
+        const {id, team_manager} = req.body
+        if (user.id !== team_manager) {
             return res.status(401).send('Only the manager can delete team events')
         }
+        const db = req.app.get('db')
         await db.delete_event([id])
         const events = await db.get_events([user.id])
         req.session.user.events = events

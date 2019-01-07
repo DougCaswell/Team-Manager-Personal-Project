@@ -23,6 +23,9 @@ class Register extends Component {
 
     async register() {
         const { email, password } = this.state
+        if (!email || !password) {
+            return alert('Must have username and password fields filled out')
+        }
         const res = await axios.post('./auth/register', { email, password })
         this.setState({
             email: '',

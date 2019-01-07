@@ -2,6 +2,24 @@
     display: flex;
     width: 100%;
 }
+.myEvents textarea {
+    border: none;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+    background-color: #f0f1f5;
+    font-weight: 550;
+    padding: 8px;
+    border-radius: 2px;
+    cursor: text;
+    height: 18px;
+    width: 355px;
+    resize: vertical;
+}
+.myEvents input:hover,
+.myEvents button:hover,
+.myEvents textarea:hover {
+    background-color: #e6e6e6;
+    box-shadow: 2px 2px 2px 1px #d1d1d1;
+}
 .navPlaceHolder {
     width: 270px;
     height: 100%;
@@ -66,6 +84,7 @@
 }
 .activeEventDetailsBox h3 {
     margin: .5em 0;
+    font-size: 19px;
 }
 .eventDescription h3 {
     border-bottom: 1px solid #e6e6e6;
@@ -75,6 +94,9 @@
 }
 .eventPlace h3 {
     border-bottom: 1px solid #e6e6e6;
+}
+.eventPlace input {
+    margin-top: .5em;
 }
 .myEventsContainer {
     display: flex;
@@ -91,13 +113,24 @@
     width: 28vw;
     position: relative;
     box-shadow: 1px 1px 10px 1px #e6e6e6;
-    padding: 1em;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     word-wrap: break-word;
     cursor: pointer;
-    font-size: 15px;
+    min-height: 54px;
+}
+.mappedEvents {
+    display: flex;
+    flex-direction: column;
+    max-height: 564px;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+}
+.event h2 {
+    font-size: 19px;
 }
 .when {
     margin-top: .5rem;
@@ -111,7 +144,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4em;
+    padding: 70px;
     border-radius: 3.5px;
     cursor: default;
 }
@@ -130,6 +163,9 @@
 }
 .address {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .address p {
     margin: 0;
@@ -137,6 +173,17 @@
 }
 .activeEventDetails .first {
     margin-top: 0;
+}
+.activeEventDetails .editEventButtons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-around;
+}
+.activeEventDetails .myEventMandetory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: .5em;
 }
 #cityState {
     margin: 1em 0 0 0;
@@ -155,4 +202,7 @@
 #cityStateValue p {
     margin: 0;
     padding: 0;
+}
+#cityStateValue input {
+    width: 107px;
 }

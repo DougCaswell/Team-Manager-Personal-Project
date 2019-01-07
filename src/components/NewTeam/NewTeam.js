@@ -28,7 +28,9 @@ class NewTeam extends Component {
 
     async createTeam() {
         const { id } = this.props.user
-        const res = await axios.post('/api/team/new', { name: this.state.name, description: this.state.description, id })
+        const { name, description } = this.state
+        if (!name) { return alert('Team needs a name') }
+        const res = await axios.post('/api/team/new', { name, description, id })
         this.setState({
             name: '',
             description: ''
@@ -49,8 +51,8 @@ class NewTeam extends Component {
                         </div>
                         <div className='myNewTeamContainer'>
                             <div>
-                                <h3>Team Name: </h3><input onChange={event => this.handleInputChange(event)} className='newTeamName' name='name' maxLength='32' />
-                                <h3>Description: </h3><textarea className='description' name='description' maxLength='500' onChange={(event) => this.handleInputChange(event)} value={this.state.description} />
+                                <h3>Team Name </h3><input placeholder='Team Name' onChange={event => this.handleInputChange(event)} className='newTeamName' name='name' maxLength='32' />
+                                <h3>Description </h3><textarea placeholder='Click and drag the bottom right corner to resize' className='description' name='description' maxLength='500' onChange={(event) => this.handleInputChange(event)} value={this.state.description} />
                                 <button onClick={() => this.createTeam()}>Create Team</button>
                             </div>
                         </div>

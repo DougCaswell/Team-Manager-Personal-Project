@@ -9,8 +9,7 @@ module.exports = {
     editProfile: async (req, res) => {
         if (!req.session.user) {
             return res.status(401).send('Please login first');
-        }
-        console.log(req.body)
+        }                            
         const { id } = req.session.user
         const email = req.body.email;
         const full_name = req.body.full_name || null;

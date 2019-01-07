@@ -52,6 +52,7 @@ class Dashboard extends Component {
     }
     async editProfile() {
         const { user } = this.state;
+        if (!user.email) {return alert('Must have an email')}
         const res = await axios.post('/api/user', user)
         this.props.updateUser(res.data)
         this.toggleEdit()
