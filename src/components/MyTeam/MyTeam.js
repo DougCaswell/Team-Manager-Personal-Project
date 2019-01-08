@@ -124,13 +124,24 @@ class MyTeam extends Component {
             if (this.props.team.members) {
                 if (this.props.team.team_manager === this.props.user.id) {
                     mapMembers = this.props.team.members.map(member => {
-                        const { full_name, email, phone, preferred_contact_method, displayed_name, id } = member
+                        const { full_name, email, phone, prefered_contact_method, displayed_name, id } = member
+                        if (this.props.team.team_manager === member.id) {
+                            return (
+                                <div key={id}>
+                                    <h2>{displayed_name || full_name || email}
+                                        <div className="popup">Details
+                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p><p>Team Manager</p></span>
+                                        </div>
+                                    </h2>
+                                </div>
+                            )
+                        }
                         if (this.props.user.id === id) {
                             return (
                                 <div key={id}>
                                     <h2>{displayed_name || full_name || email}
                                         <div className="popup">Details
-                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${preferred_contact_method || '?'}`}</p></span>
+                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p></span>
                                         </div>
                                     </h2>
                                 </div>
@@ -141,7 +152,7 @@ class MyTeam extends Component {
                                 <h4 className='removeButton' >Remove from team <button onClick={() => this.removeFromTeam(id)}>X</button></h4>
                                 <h2>{displayed_name || full_name || email}
                                     <div className="popup">Details
-                                <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${preferred_contact_method || '?'}`}</p></span>
+                                <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p></span>
                                     </div>
                                 </h2>
                             </div>
@@ -149,12 +160,23 @@ class MyTeam extends Component {
                     })
                 } else {
                     mapMembers = this.props.team.members.map(member => {
-                        const { full_name, email, phone, preferred_contact_method, displayed_name, id } = member
+                        const { full_name, email, phone, prefered_contact_method, displayed_name, id } = member
+                        if (this.props.team.team_manager === member.id) {
+                            return (
+                                <div key={id}>
+                                    <h2>{displayed_name || full_name || email}
+                                        <div className="popup">Details
+                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p><p>Team Manager</p></span>
+                                        </div>
+                                    </h2>
+                                </div>
+                            )
+                        }
                         return (
                             <div key={id}>
                                 <h2>{displayed_name || full_name || email}
                                     <div className="popup">Details
-                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${preferred_contact_method || '?'}`}</p></span>
+                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p></span>
                                     </div>
                                 </h2>
                             </div>
