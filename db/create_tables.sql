@@ -41,3 +41,11 @@ CREATE TABLE events
 	date DATE,
 	time TIME
 );
+
+CREATE TABLE messages
+(
+	id SERIAL PRIMARY KEY,
+	team_id INT REFERENCES teams NOT NULL,
+	user_id INT REFERENCES users NOT NULL,
+	message VARCHAR(500)
+);

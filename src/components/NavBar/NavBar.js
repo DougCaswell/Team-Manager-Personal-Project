@@ -11,20 +11,31 @@ class NavBar extends Component {
         this.state = {
             teams: [],
             teamsOpen: false,
+            chatOpen: false
         }
     }
 
     toggleTeams() {
         this.setState({
-            teamsOpen: !this.state.teamsOpen
+            teamsOpen: !this.state.teamsOpen,
+            chatOpen: false
         })
     }
 
-    closeTeams() {
+    toggleChat() {
         this.setState({
+            chatOpen: !this.state.chatOpen,
             teamsOpen: false
+        }) 
+    }
+
+    closeDropdowns() {
+        this.setState({
+            teamsOpen: false,
+            chatOpen: false
         })
     }
+
 
     async logout() {
         const res = await axios.get('/auth/logout')
@@ -50,8 +61,18 @@ class NavBar extends Component {
         const mapTeams = this.state.teams.map(team => {
             return (
                 <h2 key={team.id}><div><Link onClick={() => {
-                    this.toggleTeams()
+                    this.closeDropdowns()
                 }} to={`/myteam/${team.id}`}>{team.name}</Link></div></h2>
+            )
+        })
+        return mapTeams;
+    }
+    getTeamChat() {
+        const mapTeams = this.state.teams.map(team => {
+            return (
+                <h2 key={team.id}><div><Link onClick={() => {
+                    this.closeDropdowns()
+                }} to={`/chat/${team.id}`}>{team.name}</Link></div></h2>
             )
         })
         return mapTeams;
@@ -71,7 +92,7 @@ class NavBar extends Component {
                             <Link to='/profile' >
                                 <Image cloudName='djqtnii8i' publicId='bqyyv0zbzsgmmd0jvgdn' alt='' />
                                 <h2 onClick={() => {
-                                    this.closeTeams()
+                                    this.closeDropdowns()
                                 }}>Profile</h2>
                             </Link>
                         </div>
@@ -86,17 +107,28 @@ class NavBar extends Component {
                                 </div>
                             ) : null}
                         </div>
-                        <div onClick={() => this.closeTeams()} className='linkContainer'>
+                        <div onClick={() => this.closeDropdowns()} className='linkContainer'>
                             <Link to='/newteam' >
                                 <Image cloudName='djqtnii8i' publicId='l336uuhjflxobh4py8oc' alt='' />
                                 <h2>Create Team</h2>
                             </Link>
                         </div>
-                        <div onClick={() => this.closeTeams()} className='linkContainer'>
+                        <div onClick={() => this.closeDropdowns()} className='linkContainer'>
                             <Link to='/myevents' >
                                 <Image cloudName='djqtnii8i' publicId='ppufmzwedkmkpd0s4a7g' alt='' />
                                 <h2>My Events</h2>
                             </Link>
+                        </div>
+                        <div className='myTeamListSection'>
+                            <div className='linkContainer' onClick={() => this.toggleChat()}>
+                                <Image cloudName='djqtnii8i' publicId='u1k4lh1bpl9es32lfm0p' alt='' />
+                                <h2>Team Chat</h2>
+                            </div>
+                            {this.state.chatOpen ? (
+                                <div className='myTeamChatList'>
+                                    {this.getTeamChat()}
+                                </div>
+                            ) : null}
                         </div>
                     </div>
                     <button id='logout' onClick={() => this.logout()}>Logout</button>

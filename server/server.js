@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
+const socket = require('socket.io');
 const auth = require('./controllers/auth');
 const user = require('./controllers/user');
 const team = require('./controllers/team');
@@ -10,6 +11,9 @@ const event = require('./controllers/event');
 const { SERVER_PORT, CONNECTION_STRING, SECRET, DEV } = process.env;
 
 const app = express();
+const io = socket(app.listen(SERVER_PORT, () => {
+    console.log('now listening on port', SERVER_PORT)
+}));
 
 app.use(express.json())
 
@@ -19,7 +23,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(async function authBypass(req, res, next) {
+
+massive(CONNECTION_STRING).then(db => {
+    app.set('db', db);
+});
+
+app.use(async (req, res, next) => {
     if (DEV === 'true') {
         let db = req.app.get('db');
         let user = await db.session_user();
@@ -28,13 +37,6 @@ app.use(async function authBypass(req, res, next) {
     } else {
         next();
     };
-});
-
-massive(CONNECTION_STRING).then(db => {
-    app.set('db', db);
-    app.listen(SERVER_PORT, () => {
-        console.log('listening on port ', SERVER_PORT)
-    });
 });
 
 app.post('/auth/register', auth.register)
@@ -59,3 +61,34 @@ app.post('/api/event/new', event.newEvent)
 app.get('/api/events', event.getEvents)
 app.post('/api/events/edit', event.editEvent)
 app.post('/api/events/delete', event.deleteEvent)
+
+
+io.on('connection', socket => {
+    console.log('User Connected')
+
+    socket.on('load messages', async data => {
+        const { team_id, user_id, room } = data
+        if (!user_id) { return io.emit('ERROR', { message: 'You must login first' }) }
+        const db = app.get('db')
+        const onTeam = await db.find_user_on_team([team_id, user_id])
+        if (!onTeam[0]) { return io.emit('ERROR', { message: "You are not on this team!" }) }
+        socket.join(room)
+        let messages = await db.get_messages([team_id])
+        io.to(room).emit('get messages', messages)
+    });
+
+    socket.on('message sent', async data => {
+        const { team_id, user_id, message } = data
+        if (!user_id) { return io.emit('ERROR', { message: 'You must login first' }) }
+        const db = app.get('db')
+        const onTeam = await db.find_user_on_team([team_id, user_id])
+        if (!onTeam[0]) { return io.emit('ERROR', { message: "You are not on this team!" }) }
+        await db.create_message([team_id, user_id, message])
+        const messages = await db.get_messages([team_id])
+        io.emit('get messages', messages)
+    });
+
+    socket.on('disconnect', () => {
+        console.log('User Disconnected')
+    })
+})

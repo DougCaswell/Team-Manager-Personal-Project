@@ -64,7 +64,8 @@
 .linkContainer:hover h2 {
     color: #c5fffe;
 }
-.myTeamList h2:hover {
+.myTeamList h2:hover,
+.myTeamChatList h2:hover {
     border: none;
 }
 #logout {
@@ -96,7 +97,22 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
-.myTeamList h2 {
+.myTeamChatList {
+    position: absolute;
+    left: 15em;
+    top: 18rem;
+    box-shadow: 3px 3px 8px 1px #dcdce8;
+    background-color: whitesmoke;
+    margin: 0;
+    padding: 0 15px;
+    -webkit-animation: fadeIn .15s;
+    animation: fadeIn .15s;
+    max-height: 75%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.myTeamList h2,
+.myTeamChatList h2 {
     margin: 0;
     background-color: transparent;
     box-shadow: none;
@@ -104,17 +120,20 @@
 .myTeamListSection a {
     cursor: pointer;
 }
-.myTeamList a:hover {
+.myTeamList a:hover,
+.myTeamChatList a:hover {
     color: #001a19;
 }
 .NavBar a {
     text-decoration: none;
     color: whitesmoke;
 }
-.myTeamList a {
+.myTeamList a,
+.myTeamChatList a {
     color: #1B1B25;
 }
-.myTeamList h2:hover a {
+.myTeamList h2:hover a,
+.myTeamChatList h2:hover a {
     color: #001a19;
     font-size: 1.1em;
 }

@@ -1,0 +1,63 @@
+.teamChat {
+    display: flex;
+    width: 100%;
+}
+.teamChatContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+}
+.messages {
+    height: 650px;
+    box-shadow: 1px 1px 1px 1px #d1d1d1;
+    background-color: #f0f1f5;
+    padding: 70px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+.message,
+.myMessage {
+    max-width: 200px;
+    border-radius: 14px;
+    padding: 10px;
+    margin-bottom: 4px;    
+}
+.message h2,
+.message p,
+.myMessage h2,
+.myMessage p {
+    padding: 0;
+    margin: 0;
+}
+.message {
+    background-color: white;
+    text-align: left;
+    align-self: flex-start;
+}
+.message h2 {
+    font-size: 18px;
+}
+.messages p {
+    font-size: 15px;
+}
+.myMessage {
+    background-color: #0088ce;
+    color: whitesmoke;
+    text-align: right;
+    align-self: flex-end;
+}
+.teamChatContainer input {
+width: 631px;
+}
+.teamChatContainer input:hover,
+.teamChatContainer button:hover {
+    background-color: #e6e6e6;
+    box-shadow: 2px 2px 2px 1px #d1d1d1;
+}
