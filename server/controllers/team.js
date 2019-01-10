@@ -37,6 +37,8 @@ module.exports = {
         if (!user[0]) {
             return res.status(200).send('Sorry, no user with that email exists.  They must create an account first.')
         }
+        
+
         const onTeamAlready = await db.find_user_on_team([teamId, user[0].id])
         if (onTeamAlready[0]) {
             return res.status(200).send('User is already on this team')

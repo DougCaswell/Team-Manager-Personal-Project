@@ -12,6 +12,8 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "massive": "^5.7.1",
+    "nodemailer": "^5.1.0",
+    "randomstring": "^1.1.5",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",

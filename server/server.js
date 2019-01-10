@@ -7,6 +7,7 @@ const auth = require('./controllers/auth');
 const user = require('./controllers/user');
 const team = require('./controllers/team');
 const event = require('./controllers/event');
+const invite = require('./controllers/invite');
 
 const { SERVER_PORT, CONNECTION_STRING, SECRET, DEV } = process.env;
 
@@ -62,6 +63,9 @@ app.get('/api/events', event.getEvents)
 app.post('/api/events/edit', event.editEvent)
 app.post('/api/events/delete', event.deleteEvent)
 
+app.post('/api/invite', invite.sendInvite)
+app.post('/api/invite/answer', invite.answerInvite)
+
 
 io.on('connection', socket => {
     console.log('User Connected')
@@ -92,3 +96,5 @@ io.on('connection', socket => {
         console.log('User Disconnected')
     })
 })
+
+

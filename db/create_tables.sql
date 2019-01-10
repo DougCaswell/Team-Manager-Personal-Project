@@ -8,6 +8,7 @@ CREATE TABLE users
 	prefered_contact_method VARCHAR(20),
 	profile_picture_url TEXT,
 	displayed_name VARCHAR(40)
+	-- active BOOLEAN
 );
 
 CREATE TABLE teams
@@ -48,4 +49,11 @@ CREATE TABLE messages
 	team_id INT REFERENCES teams NOT NULL,
 	user_id INT REFERENCES users NOT NULL,
 	message VARCHAR(500)
+);
+
+CREATE TABLE invites
+(
+	id SERIAL PRIMARY KEY,
+	team_id INT REFERENCES teams NOT NULL,
+	user_id INT REFERENCES users NOT NULL
 );

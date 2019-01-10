@@ -8,6 +8,7 @@ import Register from './components/Register/Register';
 import NewEvent from './components/NewEvent/NewEvent';
 import MyEvents from './components/MyEvents/MyEvents';
 import TeamChat from './components/TeamChat/TeamChat';
+import TeamInvites from './components/TeamInvites/TeamInvites';
 
 export default (
     <Switch>
@@ -19,5 +20,6 @@ export default (
         <Route path='/newevent/:teamid' component={NewEvent} />
         <Route path='/myevents' component={MyEvents} />
         <Route path='/chat/:teamid' component={TeamChat} />
+        <Route path='/invites' component={TeamInvites} />
     </Switch>
 )

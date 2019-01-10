@@ -76,11 +76,15 @@ class MyTeam extends Component {
         if (!email) {
             return alert('Needs a email')
         }
-        const teamId = this.props.team.id
-        const res = await axios.post('/api/team/member', { email, teamId })
-        if (res.data.members) {
-            this.props.updateTeam(res.data)
+        const res = await axios.post('/api/invite', { email })
+        if (res.message) {
+            return alert(res.message)
         }
+        // const teamId = this.props.team.id
+        // const res = await axios.post('/api/team/member', { email, teamId })
+        // if (res.data.members) {
+        //     this.props.updateTeam(res.data)
+        // }
         this.setState({
             email: ''
         })
