@@ -8,6 +8,7 @@ const user = require('./controllers/user');
 const team = require('./controllers/team');
 const event = require('./controllers/event');
 const invite = require('./controllers/invite');
+const path = require('path');
 
 const { SERVER_PORT, CONNECTION_STRING, SECRET, DEV } = process.env;
 
@@ -29,6 +30,8 @@ massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
 });
 
+
+
 app.use(async (req, res, next) => {
     if (DEV === 'true') {
         let db = req.app.get('db');
@@ -39,6 +42,9 @@ app.use(async (req, res, next) => {
         next();
     };
 });
+
+app.use(express.static(`${__dirname}/../build`));
+
 
 app.post('/auth/register', auth.register)
 app.post('/auth/login', auth.login)
@@ -69,7 +75,7 @@ app.post('/api/invite/answer', invite.answerInvite)
 
 io.on('connection', socket => {
     console.log('User Connected')
-
+    
     socket.on('load messages', async data => {
         const { team_id, user_id, room } = data
         if (!user_id) { return io.emit('ERROR', { message: 'You must login first' }) }
@@ -80,7 +86,7 @@ io.on('connection', socket => {
         let messages = await db.get_messages([team_id])
         io.to(room).emit('get messages', messages)
     });
-
+    
     socket.on('message sent', async data => {
         const { team_id, user_id, message } = data
         if (!user_id) { return io.emit('ERROR', { message: 'You must login first' }) }
@@ -91,10 +97,13 @@ io.on('connection', socket => {
         const messages = await db.get_messages([team_id])
         io.emit('get messages', messages)
     });
-
+    
     socket.on('disconnect', () => {
         console.log('User Disconnected')
     })
 })
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
