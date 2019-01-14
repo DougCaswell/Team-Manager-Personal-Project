@@ -105,10 +105,11 @@ class Dashboard extends Component {
                     this.setState({
                         user: { ...this.state.user, profile_picture_url: result[0].public_id }
                     })
+                } else {
+                    console.log(error)
                 }
             }
         );
-        this.toggleEdit()
     }
 
 
