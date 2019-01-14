@@ -6,7 +6,9 @@ const bcrypt = require('bcryptjs')
 const { USER, PASS, REACT_APP_LOGIN } = process.env
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
     auth: {
         user: USER,
         pass: PASS
