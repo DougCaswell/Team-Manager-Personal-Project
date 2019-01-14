@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import './NavBar.css'
+import { updateUser } from '../../ducks/reducer';
 import { Image } from 'cloudinary-react';
 
 class NavBar extends Component {
@@ -11,7 +12,20 @@ class NavBar extends Component {
         this.state = {
             teams: [],
             teamsOpen: false,
-            chatOpen: false
+            chatOpen: false,
+            invites: []
+        }
+    }
+    async componentDidMount() {
+        const { pathname } = this.props.location
+        if (pathname === '/' || pathname === '/register') {
+            return
+        } else {
+            let inviteRes = await axios.get('/api/invite')
+            this.props.updateUser(inviteRes.data)
+            this.setState({
+                invites: inviteRes.data.invites
+            })
         }
     }
 
@@ -26,7 +40,7 @@ class NavBar extends Component {
         this.setState({
             chatOpen: !this.state.chatOpen,
             teamsOpen: false
-        }) 
+        })
     }
 
     closeDropdowns() {
@@ -65,7 +79,15 @@ class NavBar extends Component {
                 }} to={`/myteam/${team.id}`}>{team.name}</Link></div></h2>
             )
         })
-        return mapTeams;
+        if (mapTeams[0]) {
+            return mapTeams;
+        } else {
+            return (
+                <h2><div onClick={() => {
+                    this.closeDropdowns()
+                }} className='a'>No teams yet</div></h2>
+            )
+        }
     }
     getTeamChat() {
         const mapTeams = this.state.teams.map(team => {
@@ -75,7 +97,15 @@ class NavBar extends Component {
                 }} to={`/chat/${team.id}`}>{team.name}</Link></div></h2>
             )
         })
-        return mapTeams;
+        if (mapTeams[0]) {
+            return mapTeams;
+        } else {
+            return (
+                <h2><div onClick={() => {
+                    this.closeDropdowns()
+                }} className='a'>No teams yet</div></h2>
+            )
+        }
     }
 
     render() {
@@ -130,6 +160,21 @@ class NavBar extends Component {
                                 </div>
                             ) : null}
                         </div>
+                        {this.state.invites[0] ? (
+                            <div onClick={() => this.closeDropdowns()} className='linkContainer'>
+                                <Link to='/invites' >
+                                    <Image cloudName='djqtnii8i' publicId='ysb7prc7jpid3d5iclbn' alt='' />
+                                    <h2>Team Invites</h2>
+                                </Link>
+                            </div>
+                        ) : (
+                                <div onClick={() => this.closeDropdowns()} className='linkContainer'>
+                                    <Link to='/invites' >
+                                        <Image cloudName='djqtnii8i' publicId='lkxxsv2w7i0aewvtxlaz' alt='' />
+                                        <h2>Team Invites</h2>
+                                    </Link>
+                                </div>
+                            )}
                     </div>
                     <button id='logout' onClick={() => this.logout()}>Logout</button>
                 </div>
@@ -143,4 +188,4 @@ const mapStateToProps = (reduxState) => {
     )
 }
 
-export default withRouter(connect(mapStateToProps)(NavBar));
+export default withRouter(connect(mapStateToProps, { updateUser })(NavBar));

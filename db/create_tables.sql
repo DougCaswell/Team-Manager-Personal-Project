@@ -1,14 +1,22 @@
+DROP TABLE invites;
+DROP TABLE user_to_team;
+DROP TABLE events;
+DROP TABLE messages;
+DROP TABLE teams;
+DROP TABLE users;
+
 CREATE TABLE users
 (
 	id SERIAL PRIMARY KEY,
 	email VARCHAR(64) NOT NULL UNIQUE,
 	hash TEXT NOT NULL,
 	full_name VARCHAR(64),
-	phone INT,
-	prefered_contact_method VARCHAR(20),
+	phone BIGINT,
+	preferred_contact_method VARCHAR(20),
 	profile_picture_url TEXT,
-	displayed_name VARCHAR(40)
-	-- active BOOLEAN
+	displayed_name VARCHAR(40),
+	active BOOLEAN,
+	confirmation_code text
 );
 
 CREATE TABLE teams
@@ -16,20 +24,20 @@ CREATE TABLE teams
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(32) NOT NULL,
 	description VARCHAR(500),
-	team_manager INT REFERENCES users
+	team_manager INT NOT NULL
 );
 
 CREATE TABLE user_to_team
 (
 	id SERIAL PRIMARY KEY,
-	user_id INT REFERENCES users,
-	team_id INT REFERENCES teams
+	user_id INT NOT NULL,
+	team_id INT NOT NULL
 );
 
 CREATE TABLE events
 (
 	id SERIAL PRIMARY KEY,
-	team_id INT REFERENCES teams NOT NULL,
+	team_id INT NOT NULL,
 	name TEXT,
 	description TEXT,
 	address_line_one TEXT,
@@ -46,14 +54,15 @@ CREATE TABLE events
 CREATE TABLE messages
 (
 	id SERIAL PRIMARY KEY,
-	team_id INT REFERENCES teams NOT NULL,
-	user_id INT REFERENCES users NOT NULL,
+	team_id INT NOT NULL,
+	user_id INT NOT NULL,
 	message VARCHAR(500)
 );
 
 CREATE TABLE invites
 (
 	id SERIAL PRIMARY KEY,
-	team_id INT REFERENCES teams NOT NULL,
-	user_id INT REFERENCES users NOT NULL
+	team_id INT NOT NULL,
+	team_name text,
+	user_id INT NOT NULL
 );

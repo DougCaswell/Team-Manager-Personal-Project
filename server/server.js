@@ -48,6 +48,8 @@ app.use(express.static(`${__dirname}/../build`));
 
 app.post('/auth/register', auth.register)
 app.post('/auth/login', auth.login)
+app.post('/auth/code', auth.checkCode)
+app.post('/auth/password', auth.changePassword)
 app.get('/auth/logout', auth.logout)
 
 app.get('/api/user', user.getUser)
@@ -69,6 +71,7 @@ app.get('/api/events', event.getEvents)
 app.post('/api/events/edit', event.editEvent)
 app.post('/api/events/delete', event.deleteEvent)
 
+app.get('/api/invite', invite.getInvites)
 app.post('/api/invite', invite.sendInvite)
 app.post('/api/invite/answer', invite.answerInvite)
 

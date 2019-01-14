@@ -132,9 +132,17 @@ class NewEvent extends Component {
             }
         } else {
             return (
-                <div className='login'>
-                    Please login first
-                    <Link to='/'>Login</Link>
+                <div className='Dashboard'>
+                    <div className='navPlaceHolder'></div>
+                    <div className='container'>
+                        <div className='myHeader'>
+                            <h1>New Event</h1>
+                        </div>
+                        <div className='login'>
+                            Please login first
+                            <Link to='/'>Login</Link>
+                        </div>
+                    </div>
                 </div>
             )
         }

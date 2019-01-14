@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { updateTeam, updateUser } from '../../ducks/reducer';
 import './MyEvents.css';
+import { Link } from 'react-router-dom';
 
 class MyEvents extends Component {
     constructor() {
@@ -86,14 +87,14 @@ class MyEvents extends Component {
         const index = this.props.user.events.findIndex(event => event.id === id)
         const activeEvent = this.props.user.events[index]
         this.setState({
-            activeEvent: {...activeEvent, date: this.formatDate(activeEvent.date), time: this.formatTime(activeEvent.time)},
+            activeEvent: { ...activeEvent, date: this.formatDate(activeEvent.date), time: this.formatTime(activeEvent.time) },
             edit: false
         })
     }
 
     async deleteEvent() {
         const { id, team_manager } = this.state.activeEvent
-        const res = await axios.post('/api/events/delete', {id, team_manager})
+        const res = await axios.post('/api/events/delete', { id, team_manager })
         this.props.updateUser(res.data)
         this.setState({
             activeEvent: {},
@@ -262,10 +263,16 @@ class MyEvents extends Component {
             )
         } else {
             return (
-                <div className='loadingContainer'>
+                <div className='Dashboard'>
                     <div className='navPlaceHolder'></div>
-                    <div className='loading' >
-                        Loading...
+                    <div className='container'>
+                        <div className='myHeader'>
+                            <h1>My Events</h1>
+                        </div>
+                        <div className='login'>
+                            Please login first
+                            <Link to='/'>Login</Link>
+                        </div>
                     </div>
                 </div>
             )

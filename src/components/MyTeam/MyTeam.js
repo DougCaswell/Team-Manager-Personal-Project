@@ -129,23 +129,12 @@ class MyTeam extends Component {
                 if (this.props.team.team_manager === this.props.user.id) {
                     mapMembers = this.props.team.members.map(member => {
                         const { full_name, email, phone, prefered_contact_method, displayed_name, id } = member
-                        if (this.props.team.team_manager === member.id) {
+                        if (this.props.team.team_manager === id) {
                             return (
                                 <div key={id}>
                                     <h2>{displayed_name || full_name || email}
                                         <div className="popup">Details
-                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p><p>Team Manager</p></span>
-                                        </div>
-                                    </h2>
-                                </div>
-                            )
-                        }
-                        if (this.props.user.id === id) {
-                            return (
-                                <div key={id}>
-                                    <h2>{displayed_name || full_name || email}
-                                        <div className="popup">Details
-                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p></span>
+                                    <span className="popuptext teamManager" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p><p>Team Manager</p></span>
                                         </div>
                                     </h2>
                                 </div>
@@ -170,7 +159,7 @@ class MyTeam extends Component {
                                 <div key={id}>
                                     <h2>{displayed_name || full_name || email}
                                         <div className="popup">Details
-                                    <span className="popuptext" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p><p>Team Manager</p></span>
+                                    <span className="popuptext teamManager" id="myPopup"><p>{`Full Name: ${full_name || '?'}`}</p> <p>{`Email: ${email || '?'}`}</p> <p>{`Phone: ${phone || '?'}`}</p> <p>{`Preferred Contact Method: ${prefered_contact_method || '?'}`}</p><p>Team Manager</p></span>
                                         </div>
                                     </h2>
                                 </div>
@@ -213,8 +202,10 @@ class MyTeam extends Component {
                                         <div className='editTeam'>
                                             <div className='editTeamName'>
                                                 <h2>Edit Team Name</h2>
-                                                <input name='name' onChange={(event) => this.handleInputChange(event)} placeholder='Name' />
-                                                <button onClick={() => this.editTeamName()} >Save</button>
+                                                <div className='horizontalInputButton'>
+                                                    <input name='name' onChange={(event) => this.handleInputChange(event)} placeholder='Name' />
+                                                    <button onClick={() => this.editTeamName()} >Save</button>
+                                                </div>
                                             </div>
                                             <div className='editTeamDescription'>
                                                 <h2>Edit Team Description</h2>
@@ -222,18 +213,22 @@ class MyTeam extends Component {
                                                 <button onClick={() => this.editTeamDescription()} >Save</button>
                                             </div>
                                             <div className='newTeamMember'>
-                                                <h2>Add Team Member</h2>
-                                                <input type='email' name='email' value={this.state.email} onChange={event => this.handleInputChange(event)} placeholder='E-mail' />
-                                                <button onClick={() => this.addUserToTeam()} >Add</button>
+                                                <h2>Invite New Member</h2>
+                                                <div className='horizontalInputButton'>
+                                                    <input type='email' name='email' value={this.state.email} onChange={event => this.handleInputChange(event)} placeholder='E-mail' />
+                                                    <button onClick={() => this.addUserToTeam()} >Send</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <h2 className='EditTitle'>Change Manager</h2>
                                         <div className='editManager'>
                                             <h2>Warning!!! If you change this, you will no longer be able to edit the team!</h2>
-                                            <h2>New Manager's Email</h2>
                                             <div className='changeManagerInput'>
-                                                <input placeholder='Email' name='manager' value={this.state.manager} onChange={event => this.handleInputChange(event)} />
-                                                <button onClick={() => this.editTeamManager()}>Change</button>
+                                                <h2>New Manager's Email</h2>
+                                                <div className='horizontalInputButton'>
+                                                    <input placeholder='Email' name='manager' value={this.state.manager} onChange={event => this.handleInputChange(event)} />
+                                                    <button onClick={() => this.editTeamManager()}>Change</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <h2 className='EditTitle'>Delete Team</h2>
@@ -275,12 +270,16 @@ class MyTeam extends Component {
 
         } else {
             return (
-                <div className='loadingContainer'>
+                <div className='Dashboard'>
                     <div className='navPlaceHolder'></div>
-                    <div className='login'>
-                        Please login first
+                    <div className='container'>
+                        <div className='myHeader'>
+                            <h1>My Team</h1>
+                        </div>
+                        <div className='login'>
+                            Please login first
                     <Link to='/'>Login</Link>
-                        <div></div>
+                        </div>
                     </div>
                 </div>
             )

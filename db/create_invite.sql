@@ -1,8 +1,8 @@
 INSERT INTO invites
 (
-    team_id, user_id
+    team_id, team_name, user_id
 )
 VALUES
 (
-    $1, $2
+    $1, $2, $3
 )

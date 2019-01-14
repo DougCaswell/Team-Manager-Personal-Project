@@ -100,7 +100,7 @@
 .myTeamChatList {
     position: absolute;
     left: 15em;
-    top: 18rem;
+    top: 19rem;
     box-shadow: 3px 3px 8px 1px #dcdce8;
     background-color: whitesmoke;
     margin: 0;
@@ -117,23 +117,29 @@
     background-color: transparent;
     box-shadow: none;
 }
-.myTeamListSection a {
+.myTeamListSection a,
+.a {
     cursor: pointer;
 }
 .myTeamList a:hover,
-.myTeamChatList a:hover {
+.myTeamChatList a:hover,
+.a:hover {
     color: #001a19;
 }
-.NavBar a {
+.NavBar a,
+.a {
     text-decoration: none;
     color: whitesmoke;
 }
 .myTeamList a,
-.myTeamChatList a {
+.myTeamChatList a,
+.a {
     color: #1B1B25;
 }
 .myTeamList h2:hover a,
-.myTeamChatList h2:hover a {
+.myTeamChatList h2:hover a,
+.myTeamList h2:hover .a,
+.myTeamChatList h2:hover .a {
     color: #001a19;
     font-size: 1.1em;
 }

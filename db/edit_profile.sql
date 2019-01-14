@@ -1,4 +1,4 @@
 UPDATE users
-SET email = $2, full_name = $3, phone = $4, prefered_contact_method = $5, profile_picture_url = $6, displayed_name =$7
+SET full_name = $2, phone = $3, preferred_contact_method = $4, profile_picture_url = $5, displayed_name =$6
 WHERE id = $1
 RETURNING *

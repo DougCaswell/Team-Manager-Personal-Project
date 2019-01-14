@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { updateTeam, updateUser } from '../../ducks/reducer';
 import io from 'socket.io-client';
 import './TeamChat.css';
+import { Link } from 'react-router-dom';
 
 class TeamChat extends Component {
     constructor() {
@@ -22,11 +23,7 @@ class TeamChat extends Component {
         this.props.updateUser(userRes.data)
         let teamRes = await axios.get(`/api/team/${team_id}`)
         this.props.updateTeam(teamRes.data)
-
-        console.log(this.state.firstTime)
-
         const room = 'room ' + team_id
-
         this.socket = io()
 
         this.socket.emit('load messages', { team_id, user_id: this.props.user.id, room })
@@ -62,7 +59,7 @@ class TeamChat extends Component {
         }
     }
 
-    
+
 
     updateMessages(messages) {
         let messagesDiv = document.getElementById('messages');
@@ -78,11 +75,11 @@ class TeamChat extends Component {
                 atBottom: false
             })
         }
-        if(this.state.firstTime) {
+        if (this.state.firstTime) {
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                this.setState({
-                    firstTime: false
-                });
+            this.setState({
+                firstTime: false
+            });
         }
     }
 
@@ -124,15 +121,31 @@ class TeamChat extends Component {
                 )
             }
         })
-        if(this.state.firstTime) {
+        if (!this.props.user.email) {
+            return (
+                <div className='Dashboard'>
+                    <div className='navPlaceHolder'></div>
+                    <div className='container'>
+                        <div className='myHeader'>
+                            <h1>Team Chat</h1>
+                        </div>
+                        <div className='login'>
+                            Please login first
+                    <Link to='/'>Login</Link>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        if (this.state.firstTime) {
             return (
                 <div className='loadingContainer'>
-                        <div className='navPlaceHolder'></div>
-                        <div className='loading' >
-                            Loading...
+                    <div className='navPlaceHolder'></div>
+                    <div className='loading' >
+                        Loading...
                         </div>
-                        <div id='messages'></div>
-                    </div>
+                    <div id='messages'></div>
+                </div>
             )
         }
         return (

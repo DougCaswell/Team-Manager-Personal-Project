@@ -13,7 +13,7 @@ module.exports = {
         const city = req.body.city || null;
         const state = req.body.state || null;
         const zipCode = req.body.zipCode || null;
-        const {mandetory, date, time} = req.body;
+        const { mandetory, date, time } = req.body;
         const db = req.app.get('db')
         await db.create_event([teamId, name, description, addressLineOne, addressLineTwo, addressLineThree, city, state, zipCode, mandetory, date, time]).catch(error => {
             console.log(error)
@@ -24,7 +24,7 @@ module.exports = {
     },
 
     getEvents: async (req, res) => {
-        const {user} = req.session
+        const { user } = req.session
         if (!user) {
             return res.status(401).send('must be logged in to view events')
         }
@@ -35,7 +35,7 @@ module.exports = {
     },
 
     editEvent: async (req, res) => {
-        const {user} = req.session
+        const { user } = req.session
         if (!user) {
             return res.status(401).send('must be logged in to edit events')
         }
@@ -47,7 +47,7 @@ module.exports = {
         const city = req.body.city || null;
         const state = req.body.state || null;
         const zip_Code = req.body.zip_code || null;
-        const {mandetory, name, date, time, id, team_manager} = req.body;
+        const { mandetory, name, date, time, id, team_manager } = req.body;
         if (user.id !== team_manager) {
             return res.status(401).send('Only the manager can edit team events')
         }
@@ -61,11 +61,11 @@ module.exports = {
     },
 
     deleteEvent: async (req, res) => {
-        const {user} = req.session
+        const { user } = req.session
         if (!user) {
             return res.status(401).send('must be logged in to edit events')
         }
-        const {id, team_manager} = req.body
+        const { id, team_manager } = req.body
         if (user.id !== team_manager) {
             return res.status(401).send('Only the manager can delete team events')
         }

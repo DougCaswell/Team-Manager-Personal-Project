@@ -41,6 +41,10 @@
 .myTeamMembers h2 {
     margin: 0 0 1em 0;
 }
+.horizontalInputButton {
+    display: flex;
+    text-align: left;
+}
 .loading {
     display: flex;
     flex-direction: column;
@@ -66,9 +70,23 @@
 }
 .deleteButtons h2,
 .editManager h2,
-.editTeam h2 {
+.editTeam h2,
+.changeManagerInput h2 {
     font-size: 18px;
     text-align: center;
+}
+.editTeamDescription h2,
+.changeManagerInput h2 {
+    text-align: left;
+}
+.horizontalInputButton {
+    margin: 0;
+}
+.newTeamMember h2 {
+    margin-right: 48px;
+}
+.editTeamName h2 {
+    margin-right: 75px;
 }
 .editTeam div {
     margin: 0 2.4em;
@@ -93,6 +111,7 @@
 }
 .changeManagerInput {
     display: flex;
+    flex-direction: column;
 }
 .deleteButtons {
     display: flex;
@@ -170,19 +189,20 @@
 .popup .popuptext {
     visibility: hidden;
     box-shadow: 1px 1px 1px 1px #d1d1d1;
-    width: 270px;
+    width: 320px;
     background-color: white;
     color: #1B1B25;
-    text-align: center;
+    text-align: left;
     border-radius: 6px;
     padding: .25em 0;
     position: absolute;
     bottom: -44px;
-    left: -135px;
+    left: -185px;
     margin-left: -8em;
     cursor: auto;
     overflow: visible;
     z-index: 1;
+    padding-left: 8px;
 }
 .popup .popuptext::after {
     content: "";
@@ -193,6 +213,9 @@
     border-width: .4em;
     border-style: solid;
     border-color:  transparent  transparent transparent #1B1B25;
+}
+.popup .teamManager::after {
+    top: 76px;
 }
 .popup:hover .popuptext {
     visibility: visible;

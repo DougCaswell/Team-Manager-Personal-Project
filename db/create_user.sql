@@ -1,9 +1,9 @@
 INSERT INTO users
 (
-    email, hash
+    email, hash, confirmation_code, active
 )
 VALUES
 (
-    $1, $2
+    $1, $2, $3, false
 )
 RETURNING *
