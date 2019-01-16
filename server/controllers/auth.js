@@ -11,7 +11,10 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: USER,
         pass: PASS
-    }
+    },
+    tls: {
+        rejectUnauthorized: false
+      }
 });
 
 module.exports = {
