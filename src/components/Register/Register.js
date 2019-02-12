@@ -61,6 +61,7 @@ class Register extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div className='RegisterPage'>
                 <h1>Team Manager</h1>

@@ -6,14 +6,11 @@ const bcrypt = require('bcryptjs')
 const { USER, PASS, REACT_APP_LOGIN } = process.env
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    service: 'yahoo',
     auth: {
         user: USER,
         pass: PASS
     },
-    tls: ture
 });
 
 module.exports = {

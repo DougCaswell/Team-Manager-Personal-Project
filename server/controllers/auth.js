@@ -5,14 +5,11 @@ const nodemailer = require('nodemailer');
 const { USER, PASS, REACT_APP_LOGIN } = process.env
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    service: 'Gmail',
     auth: {
         user: USER,
         pass: PASS
     },
-    tls: true
 });
 
 module.exports = {
@@ -65,7 +62,7 @@ module.exports = {
                     console.log(info);
                 }
             });
-            res.status(201).send({ loggedIn: false, message: 'New user successfully created', user: req.session.user })
+            res.status(200).send({ loggedIn: false, message: 'New user successfully created', user: req.session.user })
         }
     },
 
